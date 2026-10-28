@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AION2 Patch Guide – Oct 28, 2026</title>
+<style>
+:root{--bg:#f4f5f9;--card:#fff;--text:#1b1d2a;--mut:#5d6278;--line:#e1e4ee;--acc:#4f46e5;--acc2:#7c3aed;--ok:#0f9d6e;--warn:#d97706;--bad:#dc2626;--chip:#eef0fb;--gold:#b7791f;--goldbg:#fdf4dc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root:not([data-theme="light"]){color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10121b;--card:#1a1d2b;--text:#eceefa;--mut:#9aa0bb;--line:#2b2f45;--acc:#8b87ff;--acc2:#b18cff;--ok:#34d399;--warn:#fbbf24;--bad:#f87171;--chip:#242843;--gold:#f5c451;--goldbg:#2e2713}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#10121b;--card:#1a1d2b;--text:#eceefa;--mut:#9aa0bb;--line:#2b2f45;--acc:#8b87ff;--acc2:#b18cff;--ok:#34d399;--warn:#fbbf24;--bad:#f87171;--chip:#242843;--gold:#f5c451;--goldbg:#2e2713}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 52px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:920px;margin:0 auto;padding:16px}
+.hero{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:18px;padding:22px}
+.hero small{opacity:.85;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.hero h1{margin:4px 0 0;font-size:1.6rem;line-height:1.2}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;display:flex;gap:8px;overflow-x:auto;white-space:nowrap}
+nav a{background:var(--chip);color:var(--text);text-decoration:none;border-radius:999px;padding:5px 12px;font-size:.88rem;font-weight:600}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:6}
+.part{margin:28px 0 0;padding:8px 14px;border-left:5px solid var(--acc);font-size:1.3rem;font-weight:800}
+h2{font-size:1.1rem;margin:22px 0 10px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card h3{margin:0 0 8px;font-size:1rem}
+.gold{border-color:var(--gold);background:var(--goldbg)}
+.big{font-size:1.8rem;font-weight:800;line-height:1.1}
+.down{color:var(--ok)}.free{color:var(--ok)}.gold .big{color:var(--gold)}
+.mut{color:var(--mut);font-size:.9rem}
+ul{margin:6px 0 0;padding-left:18px}li{margin:3px 0}
+.chip{display:inline-block;background:var(--chip);border-radius:999px;padding:2px 10px;font-size:.85rem;margin:2px 4px 2px 0}
+.tag{display:inline-block;border-radius:6px;padding:1px 8px;font-size:.75rem;font-weight:700;margin-right:6px;color:#fff}
+.t-up{background:var(--ok)}.t-chg{background:var(--warn)}.t-new{background:var(--acc)}.t-rm{background:var(--bad)}
+.shift{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.shift em{font-style:normal;color:var(--mut);text-decoration:line-through;font-weight:500}
+.cap{display:flex;align-items:center;gap:10px;background:var(--chip);border-radius:12px;padding:10px 14px;margin-bottom:10px;font-weight:600}
+.bars{display:grid;grid-template-columns:minmax(110px,1.5fr) 3fr 60px;gap:8px 10px;align-items:center}
+.bar{height:12px;background:var(--chip);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:6px}
+.v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;margin:10px 0}
+.stat div{background:var(--chip);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-size:1.3rem}.stat span{font-size:.8rem;color:var(--mut)}
+.row{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .ic{font-size:1.3rem;width:30px;text-align:center;flex:none}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.flow .s{background:var(--chip);border-radius:10px;padding:6px 10px;font-size:.9rem}
+footer{margin:28px 0 8px;text-align:center;color:var(--mut);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+
+<section class="hero">
+  <small>AION2 · Oct 27 (PDT) / Oct 28 (CET), 2026</small>
+  <h1>Patch Guide: Daeva Pass + Official Notes</h1>
+</section>
+<nav>
+  <a href="#pass">🪽 Daeva Pass</a><a href="#exp">⚔️ Expedition</a><a href="#cls">🛡️ Classes</a><a href="#dd">🗝️ Dungeon &amp; Season</a><a href="#imp">🛠️ Improvements</a><a href="#fix">🐞 Fixes</a><a href="#rec">📦 Recovery</a>
+</nav>
+
+<div class="part" id="pass">🪽 New Daeva Pass: Kickoff to Flight</div>
+<div class="grid" style="margin-top:12px">
+  <div class="card"><h3>Start</h3><b>Wed, Oct 28 · 08:00 CET</b></div>
+  <div class="card"><h3>End</h3><b>Wed, Dec 2 · 09:00 CET</b></div>
+  <div class="card"><h3>Where</h3><b>Menu → Subscribe</b></div>
+</div>
+
+<h2>🎟️ Pass options</h2>
+<div class="grid">
+  <div class="card"><h3>Basic</h3><div class="big free">Free</div><ul><li>Complete missions to earn rewards</li><li>Once per character</li></ul></div>
+  <div class="card gold"><h3>Premium</h3><div class="big">1,000 Quna</div><ul><li><b>Instantly:</b> 20× Combat Enhancement Scroll (Bound)</li><li>Plus the Premium reward line</li><li>Once per character</li></ul></div>
+</div>
+
+<h2>⚡ Pass XP sources</h2>
+<div class="cap"><span>⏱</span> Weekly limit: 15,000 XP per character</div>
+<div class="card bars">
+  <div>Expedition / transcendence</div><div class="bar"><i style="width:100%"></i></div><div class="v">300</div>
+  <div>Defeat 10 monsters</div><div class="bar"><i style="width:20%"></i></div><div class="v">60</div>
+  <div>Open hidden cubes</div><div class="bar"><i style="width:16.7%"></i></div><div class="v">50</div>
+  <div>Successful gathering</div><div class="bar"><i style="width:10%"></i></div><div class="v">30</div>
+  <div>Successful crafting</div><div class="bar"><i style="width:10%"></i></div><div class="v">30</div>
+  <div>Soulbind equipment</div><div class="bar"><i style="width:6.7%"></i></div><div class="v">20</div>
+  <div>Enchant equipment</div><div class="bar"><i style="width:3.3%"></i></div><div class="v">10</div>
+  <div>Extract equipment</div><div class="bar"><i style="width:3.3%"></i></div><div class="v">10</div>
+</div>
+
+<h2>🎁 Rewards (levels 1–50)</h2>
+<div class="grid">
+  <div class="card"><h3>Basic line</h3><span class="chip">Small Odyl Energy (Bound)</span><span class="chip">Combat Enhancement Scrolls (Bound)</span><span class="chip">Revival Ghost Stones (Bound)</span><span class="chip">Unknown Rift tickets</span><span class="chip">Nightmare Dungeon tickets</span></div>
+  <div class="card gold"><h3>Premium line</h3><span class="chip">Full Odyl Energy (Bound)</span><span class="chip">More tickets</span><span class="chip">More scrolls</span><p class="mut" style="margin:8px 0 0">Extra and higher-quality rewards than Basic.</p></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>After level 50 (repeat level)</h3>
+  <div class="flow"><span class="s">Basic: 1× Combat Enhancement Scroll (Bound)</span><span class="s">Premium: 1× Odyl Energy (Bound)</span></div></div>
+
+<div class="part" id="exp">⚔️ Expedition</div>
+<h2>Boss balance pass</h2>
+<div class="grid">
+  <div class="card"><div class="big down">−15%</div><b>Boss Attack</b><div class="mut">Normal Expedition &amp; Transcendence Stage 1</div></div>
+  <div class="card"><div class="big down">−10%</div><b>Boss Attack + Damage Boost</b><div class="mut">Hard Expedition &amp; Transcendence Stages 2–4</div></div>
+  <div class="card"><div class="big down">−6.5%</div><b>Boss HP</b><div class="mut">Transcendence Stages 1–2</div></div>
+</div>
+<div class="card gold" style="margin-top:12px">
+  <h3><span class="tag t-new">NEW</span>Hard mode: Urugugu Canyon &amp; Vakron Sky Island</h3>
+  <div class="stat"><div><b>2700</b><span>Entry item level</span></div><div><b>4 min</b><span>Boss Frenzy timer</span></div><div><b>3</b><span>Revives per player</span></div></div>
+  <b>Rewards</b>
+  <ul>
+    <li>Chance at <b>Philosopher’s Stone: Revelation (Bound)</b>, also selectable as a guaranteed reward</li>
+    <li>Guaranteed <b>Ariel Fragment</b>: Urugugu (Bound) or Vakron (Bound), from the matching dungeon</li>
+    <li>Chance at Expedition Hero Artwork; more Kinah than Normal</li>
+    <li>All Unique crafting mats (Wrathful Mind, Will, Ego) obtainable</li>
+    <li>New Expedition (Hard) achievements grant Unique Skins</li>
+  </ul>
+  <b style="display:block;margin-top:10px">Substance Morph</b>
+  <div class="flow"><span class="s">100 Ariel Fragments</span>→<span class="s">Daevanion Crystal: Ariel (Bound)</span><span class="chip">up to 30× per char</span></div>
+  <div class="flow"><span class="s">1 Ariel Fragment</span>→<span class="s">5 Enhance Stones</span><span class="chip">unlimited</span></div>
+</div>
+
+<div class="part" id="cls">🛡️ Class changes</div>
+<div class="card" style="margin-top:12px">
+  <h3><span class="tag t-up">UP</span>Base HP at Lv. 45 <span class="mut">(pairs with the boss Attack cuts)</span></h3>
+  <div class="bars" style="grid-template-columns:110px 1fr 64px">
+    <div>Gladiator</div><div class="bar"><i style="width:100%"></i></div><div class="v">+1,500</div>
+    <div>Templar</div><div class="bar"><i style="width:100%"></i></div><div class="v">+1,500</div>
+    <div>Assassin</div><div class="bar"><i style="width:66.7%"></i></div><div class="v">+1,000</div>
+    <div>Ranger</div><div class="bar"><i style="width:66.7%"></i></div><div class="v">+1,000</div>
+    <div>Sorcerer</div><div class="bar"><i style="width:66.7%"></i></div><div class="v">+1,000</div>
+    <div>Spiritmaster</div><div class="bar"><i style="width:66.7%"></i></div><div class="v">+1,000</div>
+    <div>Chanter</div><div class="bar"><i style="width:66.7%"></i></div><div class="v">+1,000</div>
+    <div>Cleric</div><div class="bar"><i style="width:66.7%"></i></div><div class="v">+1,000</div>
+  </div>
+  <p class="mut" style="margin:10px 0 0">All were 4,702. Now <b>6,202</b> (Gladiator, Templar) and <b>5,702</b> (everyone else).</p>
+</div>
+<div class="card" style="margin-top:12px"><h3>Assassin</h3>
+  <div class="row"><div class="ic">❤️</div><div><b>Heightened Sixth Sense</b>HP effect increased to 1,000 / 2,000 / 4,000 at Lv. 5 / 10 / 20.</div></div>
+  <div class="row"><div class="ic">👥</div><div><b>Illusive Clone</b>Base cooldown <span class="shift"><em>90s</em> → 60s</span></div></div>
+</div>
+
+<div class="part" id="dd">🗝️ Daily Dungeon &amp; Season Mission</div>
+<div class="grid" style="margin-top:12px">
+  <div class="card"><h3><span class="tag t-new">NEW</span>Daily Dungeon: Odylium Repository</h3><ul><li>Awards <b>Soul Crystals (Bound)</b> based on clear points</li><li>Entry count is <b>shared</b> with Daeva Bio-Research Base</li></ul></div>
+  <div class="card"><h3>Weekly Season Mission rewards</h3><b>Land Grabs</b><br><span class="tag t-rm">REMOVED</span>Abyss Points<br><span class="tag t-new">ADDED</span>Lower Abyss Rift Stone<br><b style="display:block;margin-top:8px">Watcher Kaira</b><span class="tag t-new">ADDED</span>Lower Abyss Rift Stone</div>
+</div>
+
+<div class="part" id="imp">🛠️ Improvements</div>
+<div class="card" style="margin-top:12px">
+  <div class="row"><div class="ic">⛏️</div><div><b><span class="tag t-new">NEW</span>Gathering cap</b>1,000 gathering actions per server per day (may change). Resets daily at 08:00 CET (00:00 PDT).<br>Min. gathering level: <span class="shift"><em>10</em> → 45</span></div></div>
+  <div class="row"><div class="ic">🗑️</div><div><b><span class="tag t-chg">CHANGED</span>Character deletion wait</b><span class="shift"><em>1 day</em> → 7 days</span> <span class="mut">(stops delete/create abuse)</span></div></div>
+  <div class="row"><div class="ic">💤</div><div><b><span class="tag t-chg">CHANGED</span>Inactivity return to lobby</b><span class="shift"><em>3 hours</em> → 30 minutes</span></div></div>
+  <div class="row"><div class="ic">🎲</div><div><b><span class="tag t-up">UP</span>Hidden cubes</b>Appear more frequently.</div></div>
+  <div class="row"><div class="ic">⚔️</div><div><b><span class="tag t-up">UP</span>Abyss</b>Higher participant limit.</div></div>
+  <div class="row"><div class="ic">💠</div><div><b><span class="tag t-chg">CHANGED</span>Dimension Core (Lower Abyss)</b><ul><li>Core HP increased</li><li>New debuff <b>Loss of Power</b>: if an artifact fight lasts 10+ minutes, it weakens the Core</li></ul></div></div>
+</div>
+
+<div class="part" id="fix">🐞 Bug fixes</div>
+<div class="card" style="margin-top:12px">
+  <div class="row"><div class="ic">💀</div><div>Revival counter sometimes not reset when redoing a heavy expedition dungeon</div></div>
+  <div class="row"><div class="ic">🔁</div><div><b><span class="tag t-rm">REMOVED</span>Server transfer</b>Shop tab removed; Sweet Balaur Berry delivery quests removed.</div></div>
+  <div class="row"><div class="ic">🪽</div><div>Ariel and Azphel Daevanion were swapped in the progress overview window</div></div>
+  <div class="row"><div class="ic">👻</div><div>Some player characters were invisible in PvP</div></div>
+  <div class="row"><div class="ic">📜</div><div>Some season missions couldn’t continue after defeating the required boss</div></div>
+</div>
+
+<div class="part" id="rec">📦 Seizure &amp; recovery</div>
+<div class="card" style="margin-top:12px">
+  <div class="row"><div class="ic">📅</div><div><b>Item reclamations and recoveries</b>Schedule announced after the server transfer period ends.</div></div>
+  <div class="row"><div class="ic">🎫</div><div><b>EU dungeon entry passes</b>Not reset as planned on Oct 25, so they’ll be provided retroactively.</div></div>
+  <div class="row"><div class="ic">↩️</div><div><b>Attendance rewards</b>Rewards claimed multiple times due to a server transfer will be reclaimed.</div></div>
+</div>
+
+<footer>Times in CET unless noted · Summary of the official patch notes</footer>
+</main>
+</body>
+</html>
